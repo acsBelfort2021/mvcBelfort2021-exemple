@@ -1,0 +1,31 @@
+{% extends "template.html.twig" %}
+
+{% block title %}
+	{% if movie != false %}
+		{{ movie.title }}
+		| Édition
+	{% else %}
+		Film non trouvé
+	{% endif %}
+{% endblock %}
+
+{% block body %}
+	<h1>Je suis la page qui édite un film</h1>
+	{% if movie != false %}
+<form method="POST" action="{{ baseUrl }}/editMovie/{{ movie.id }}">
+            <input type="hidden" name="id" value="{{ movie.id }}">
+			<div class="form-group">
+				<label for="title">Titre :</label>
+				<input type="text" class="form-control" id="title" name="title" placeholder="Le titre de votre film"
+                value="{{ movie.title }}">
+			</div>
+			<div class="form-group">
+				<label for="synopsis">Synopsis :</label>
+				<textarea class="form-control" id="synopsis" name="synopsis" rows="3" placeholder="Le synopsis de votre film">{{ movie.synopsis }}</textarea>
+			</div>
+			<button type="submit" class="btn btn-primary mb-2">Éditer</button>
+		</form>
+	{% else %}
+		<p>Il n'y a pas de film correspondant à votre recherche.</p>
+	{% endif %}
+{% endblock %}

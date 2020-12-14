@@ -1,0 +1,23 @@
+{% extends "template.html.twig" %}
+
+{% block title %}
+    {% if movie != false %}
+        {{ movie.title }}
+    {% else %}
+        Film non trouvé
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    <h1>Je suis la page qui montre un film</h1>
+    {% if movie != false %}
+    <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ movie.title }}</h5>
+                <p class="card-text">{{ movie.synopsis }}</p>
+            </div>
+        </div>
+    {% else %}
+    <p>Il n'y a pas de film correspondant à votre recherche.</p>
+    {% endif %}
+{% endblock %}
