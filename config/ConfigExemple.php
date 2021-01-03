@@ -2,12 +2,13 @@
 
 namespace Config;
 
-abstract class ConfigExemple
+abstract class Config
 {
     private const USER = "root";
     private const PASSWORD = "";
     private const DATABASE = "crud";
     private const BASEURL = "http://localhost/mvcBelfort2021";
+    private const BASEPATH = "/mvcBelfort2021";
 
     public static function getDatabase()
     {
@@ -27,5 +28,10 @@ abstract class ConfigExemple
     public static function getBaseUrl()
     {
         return self::BASEURL;
+    }
+
+    public static function getBasePath()
+    {
+        return self::BASEPATH;
     }
 }

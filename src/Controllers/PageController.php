@@ -16,16 +16,19 @@ class PageController extends GeneralController
         $movieModel = new MovieModel();
         $movies = $movieModel->getAllMovies();
 
-        $template = $this->twig->load('index.html.twig');
+        $template = $this->twig->load('Page/index.html.twig');
         echo $template->render(["movies" => $movies]);
     }
 
-    public function showMovie($id)
+    public function hello($name)
     {
-        $movieModel = new MovieModel();
-        $movie = $movieModel->getOneMovie($id);
+        $template = $this->twig->load('Page/hello.html.twig');
+        echo $template->render(['name' => $name]);
+    }
 
-        $template = $this->twig->load('showMovie.html.twig');
-        echo $template->render(["movie" => $movie]);
+    public function error404()
+    {
+        $template = $this->twig->load('Page/error404.html.twig');
+        echo $template->render();
     }
 }

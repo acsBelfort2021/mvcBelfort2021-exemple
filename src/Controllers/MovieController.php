@@ -25,4 +25,13 @@ class MovieController extends GeneralController
             header("Location: {$this->baseUrl}");
         }
     }
+
+    public function showMovie($id)
+    {
+        $movieModel = new MovieModel();
+        $movie = $movieModel->getOneMovie($id);
+
+        $template = $this->twig->load('showMovie.html.twig');
+        echo $template->render(["movie" => $movie]);
+    }
 }
